@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create Audit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--datatable-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+
+    <link href="dist/css/style.css" rel="stylesheet" type="stylesheet" />
+
+    <!--font-awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!---search select dropeown list--->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link href="themify-icons/themify-icons.css" rel="stylesheet" type="text/css" />
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!---search select dropeown list end--->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand"><img src="img/Jindal-logo.png" width="100px;"></a>
+            <form class="d-flex">
+                <a href="sign-in.html"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+            </form>
+        </div>
+    </nav>
+    <!--navbar end-->
+    <section class="bg-white">
+        <div class="container-fluid bg-primar py-5 text-white" style="height: 50px; background-image: url('img/6928.jpg'); background-size: cover;
+        position: relative; background-repeat: no-repeat; background-position: top;">
+            <h5>Process Failure Mode Effect Analysis</h5>
+        </div>
+
+        <!--sub-banner-->
+        <form action="/audit" method="post">
+
+            <div class="container-fluid p-3 px-3">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <div class="box-body row rounded pt-2"
+                            style="background: linear-gradient(90deg, #013e7f, #0470e3);">
+                            <div class="col-md-3">
+                                <div class="form-group search_select_box">
+                                    <select class="form-control selectpicker" name="keyContactPerson"
+                                        data-live-search="true">
+                                        <option>Select Key Contact Person</option>
+                                        <option value="Mr. Indradyumna Datta - GCDO">Mr. Indradyumna Datta - GCDO
+                                        </option>
+                                        <option value="Mr. Hridayeshwar Jha - Plant Head">Mr. Hridayeshwar Jha - Plant
+                                            Head
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group search_select_box">
+                                    <select class="form-control selectpicker" data-live-search="true">
+                                        <option>Select Core Team</option>
+                                        <option value="Mr Aditya Vardhan ">Mr Aditya Vardhan - CISO</option>
+                                        <option value="Mr Surya Rao">Mr Surya Rao - Head SAP & IT Head Raigarh</option>
+                                        <option value="Mr Asad Kuraishi">Mr Asad Kuraishi - IT Head Angul</option>
+                                        <option value="Mr Ashtekar ">Mr Ashtekar - IT Head Barbil</option>
+                                        <option value="Mr Akhilesh Chaubey">Mr Akhilesh Chaubey - IT Head Patratu
+                                        </option>
+                                        <option value="Mr Deepak Sharma ">Mr Deepak Sharma - IT Head Corporate</option>
+                                        <option value="Mr Bipin"> Mr Bipin - Head IT Infrastructure</option>
+                                        <option value="Mr Sitikantha Pattnaik"> Mr Sitikantha Pattnaik - Head Non SAP
+                                            Applications</option>
+                                        <option value="Mr Akhilesh Singh"> Mr Akhilesh Singh - Head Web Applications
+                                        </option>
+                                        <option value="Mr Praveen Singh"> Mr Praveen Singh - Digital Officer</option>
+                                        <option value="Mr Mohit Chawla"> Mr Mohit Chawla - AGM IT</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <form id="audit-form"> -->
+                        <div class="row mt-4 border rounded shadow-sm pt-2 bg-light">
+                            <div class="col-sm-4 mb-2">
+                                <label for="current-date" class="form-label">Select Date</label>
+                                <input type="date" name="current-date" class="form-control form-control-lg" value=""
+                                    required="" placeholder="">
+                            </div>
+
+                            <div class="col-sm-4 mb-3">
+                                <label for="processFunction" class="form-label">Process Function</label>
+                                <select class="form-select" name="processFunction" aria-label="Default select example">
+                                    <option value="1">Information Technology</option>
+                                    <option value="2">IT</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-4 mb-4">
+                                <label for="requirements" class="form-label">Requirements</label>
+                                <select class="form-select" name="requirements" aria-label="Default select example">
+                                    <option value="1">Business Operations</option>
+                                    <option value="2">Others</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="potential-failure-container">
+                            <div class="row mt-4 border rounded shadow-sm pt-2 bg-light">
+                                <div class="col-sm-2 mb-2">
+                                    <label for="potentialFailureMode" class="form-label">Potential Failure Mode</label>
+                                    <select class="form-select" name="potentialFailureMode"
+                                        aria-label="Default select example">
+                                        <option value="1">Select</option>
+                                        <option value="2">Business operation dependent upon digital platform is
+                                            disrupted</option>
+                                        <option value="3">Business critical data is compromised</option>
+                                        <option value="4">Cost of restoration to normalcy</option>
+                                        <option value="5">Brand Erosion</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-3 mb-3">
+                                    <label for="potentialEffects" class="form-label">Potential Effect(s) of
+                                        Failures</label>
+                                    <input type="text" class="form-control form-control-lg" placeholder=""
+                                        name="potentialEffects">
+                                </div>
+
+                                <div class="col-sm-2 mb-2">
+                                    <label for="severity" class="form-label">Severity</label>
+                                    <select class="form-select" name="severity" aria-label="Default select example">
+                                        <option value="0">Select</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3 mb-3">
+                                    <label for="potentialCauses" class="form-label">Potential Cause(s)/Mechanism(s) of
+                                        Failures</label>
+                                    <input type="text" class="form-control form-control-lg" placeholder=""
+                                        name="potentialCauses">
+                                </div>
+                                <div class="col-sm-2 mb-2">
+                                    <label for="occurrence" class="form-label">Occurance</label>
+                                    <select class="form-select" name="occurrence" aria-label="Default select example">
+                                        <option value="1">Select</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-sm-12 d-flex justify-content-end mb-2">
+                                    <button id="add-potential-failure" type="button" class="btn btn-danger"><i
+                                            class="fa fa-plus" aria-hidden="true"></i>
+                                        ADD</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--row end-->
+
+                        <div class="current-control-container">
+
+                            <div class="row mt-4 border rounded shadow-sm pt-2 bg-light">
+                                <div class="col-sm-3 mb-2">
+                                    <label for="currentProcessControls" class="form-label">Current Process Controls
+                                        Prevention/ Detection</label>
+                                    <textarea class="form-control" name="currentProcessControls"
+                                        id="exampleFormControlTextarea1" rows="1"></textarea>
+                                </div>
+
+                                <div class="col-sm-3 mb-3">
+                                    <label for="recommendedImprovement" class="form-label">Recommended
+                                        Improvement</label>
+                                    <textarea class="form-control" name="recommendedImprovement"
+                                        id="exampleFormControlTextarea1" rows="1"></textarea>
+                                </div>
+                                <div class="col-sm-3 mb-3">
+                                    <label for="detect" class="form-label">Detect</label>
+                                    <select class="form-select" name="detect" aria-label="Default select example">
+                                        <option value="1">Select</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-sm-3 mb-3">
+                                    <label for="rpn" class="form-label">RPN</label>
+                                    <input type="text" name="rpn" class="form-control form-control-lg"
+                                        placeholder="RPN">
+                                </div>
+                                <div class="col-sm-3 mb-2">
+                                    <label for="avgRpn" class="form-label">AVG RPN</label>
+                                    <input type="text" class="form-control form-control-lg" placeholder=""
+                                        name="avgRpn">
+                                </div>
+                                <div class="col-sm-3 mb-2">
+                                    <label for="actionTaken" class="form-label">Action Taken</label>
+                                    <input type="text" class="form-control form-control-lg" name="actionTaken"
+                                        placeholder="">
+                                </div>
+
+                                <div class="col-sm-12 d-flex justify-content-end mb-2">
+                                    <button id="add-current-control" type="button" class="btn btn-danger"><i
+                                            class="fa fa-plus" aria-hidden="true"></i>
+                                        ADD</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row end -->
+                        <div class="row mt-4 border rounded shadow-sm pt-2 bg-light">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                        aria-selected="true">Objective</button>
+                                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-profile" type="button" role="tab"
+                                        aria-controls="nav-profile" aria-selected="false">Action Results </button>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade active show" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
+                                    <p>
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-6">
+                                            <label for="contingencyPlan" class="form-label">Contingency Plan</label>
+                                            <input type="text" class="form-control form-control-lg" placeholder=""
+                                                name="contingencyPlan">
+                                        </div>
+                                        <div class="col-sm-6 mb-6">
+                                            <label for="status" class="form-label">Status</label>
+                                            <input type="text" class="form-control form-control-lg" placeholder=""
+                                                name="status">
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab">
+                                    <p>
+                                    <div class="row">
+                                        <div class="col-sm-3 mb-3">
+                                            <label for="Sev" class="form-label">Sev</label>
+                                            <select class="form-select" aria-label="Default select example" name="Sev">
+                                                <option value="1">Select</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-3">
+                                            <label class="form-label">Occur</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option value="1">Select</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 mb-3">
+                                            <label class="form-label">Detect</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option value="1">Select</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-sm-3 mb-3">
+                                            <label for="" class="form-label">RPN</label>
+                                            <input type="text" class="form-control form-control-lg" placeholder="RPN">
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-row d-flex justify-content-end gap-2 mt-3 mb-3" style="padding: 0px;">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-danger">Cancel</button>
+                        <a href="riskmanagement.html"><button type="button" class="btn btn-secondary"><i
+                                    class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!---footer-->
+        <footer>
+            <div class="container-fluid mt-4" style="background-color: #797979">
+                <div class="container">
+                    <div class="row text-white text-center">
+                        <span class="align-middle py-2">© Jindal Steel & Power Limited</span>
+                    </div>
+                </div>
+        </footer>
+    </section>
+
+    <!--view- modal-->
+
+    <!---login script-->
+    <!---search select dropeown list--js-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+    <!---search select dropeown list--js-->
+    <script>
+        $('.selectpicker').selectpicker({
+            style: 'btn-1'
+        });
+    </script>
+    <!---end js--->
+
+    <!----color code selcet dropdown---->
+    <script>
+        $.fn.colorSelect = function () {
+            function build($select) {
+                var html = '';
+                var listItems = '';
+
+                $select.find('option').each(function () {
+                    listItems += '' +
+                        '<li style="background:' + this.value + '" data-colorVal="' + this.value + '">' +
+                        '<span>' + this.text + '</span>' +
+                        '</li>'
+                        ;
+                });
+
+                html = '' +
+                    '<div class="color-select">' +
+                    '<span>select one</span>' +
+                    '<ul>' + listItems + '</ul>' +
+                    '</div>'
+                    ;
+
+                return html;
+            }
+
+            this.each(function () {
+                var $this = $(this);
+
+                $this.hide();
+
+                $this.after(build($this));
+            });
+        };
+
+        $(document)
+            .on('click', '.color-select > span', function () {
+                $(this).siblings('ul').toggle();
+            })
+            .on('click', '.color-select li', function () {
+                var $this = $(this);
+                var color = $this.attr('data-colorVal');
+                var colorText = $this.find('span').text();
+                var $value = $this.parents('.color-select').find('span:first');
+                var $select = $this.parents('.color-select').prev('select');
+
+                $value.text(colorText);
+                $value.append('<span style="background:' + color + '"></span>');
+                $this.parents('ul').hide();
+                $select.val(color);
+            })
+            ;
+
+        $(function () {
+            $('[data-colorselect]').colorSelect();
+        })
+    </script>
+
+    <script>
+        document.getElementById('add-potential-failure').addEventListener('click', function () {
+            var container = document.querySelector('.potential-failure-container');
+            var row = document.createElement('div');
+            row.className = 'row mt-4 border rounded shadow-sm pt-2 bg-light';
+            row.innerHTML = `
+            <div class="col-sm-2 mb-2">
+                <label for="potentialFailureMode" class="form-label">Potential Failure Mode</label>
+                <select class="form-select" name="potentialFailureMode" aria-label="Default select example">
+                    <option value="1">Select</option>
+                    <option value="2">Business operation dependent upon digital platform is disrupted</option>
+                    <option value="3">Business critical data is compromised</option>
+                    <option value="4">Cost of restoration to normalcy</option>
+                    <option value="5">Brand Erosion</option>
+                </select>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <label for="potentialEffects" class="form-label">Potential Effect(s) of Failures</label>
+                <input type="text" class="form-control form-control-lg" placeholder="" name="potentialEffects">
+            </div>
+            <div class="col-sm-2 mb-2">
+                <label for="severity" class="form-label">Severity</label>
+                <select class="form-select" name="severity" aria-label="Default select example">
+                    <option value="0">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <label for="potentialCauses" class="form-label">Potential Cause(s)/Mechanism(s) of Failures</label>
+                <input type="text" class="form-control form-control-lg" placeholder="" name="potentialCauses">
+            </div>
+            <div class="col-sm-2 mb-2">
+                <label for="occurrence" class="form-label">Occurrence</label>
+                <select class="form-select" name="occurrence" aria-label="Default select example">
+                    <option value="1">Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>`;
+            container.appendChild(row);
+        });
+
+        document.getElementById('add-current-control').addEventListener('click', function () {
+            var container = document.querySelector('.current-control-container');
+            var row = document.createElement('div');
+            row.className = 'row mt-4 border rounded shadow-sm pt-2 bg-light';
+            row.innerHTML = `
+            <div class="col-sm-3 mb-2">
+                <label for="currentProcessControls" class="form-label">Current Process Controls Prevention/ Detection</label>
+                <textarea class="form-control" name="currentProcessControls" rows="1"></textarea>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <label for="recommendedImprovement" class="form-label">Recommended Improvement</label>
+                <textarea class="form-control" name="recommendedImprovement" rows="1"></textarea>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <label for="detect" class="form-label">Detect</label>
+                <select class="form-select" name="detect" aria-label="Default select example">
+                    <option value="1">Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <label for="rpn" class="form-label">RPN</label>
+                <input type="text" name="rpn" class="form-control form-control-lg" placeholder="RPN">
+            </div>
+             <div class="col-sm-3 mb-2">
+                <label for="avgRpn" class="form-label">AVG RPN</label>
+                <input type="text" class="form-control form-control-lg" placeholder="" name="avgRpn">
+                </div>
+                  <div class="col-sm-3 mb-2">
+                    <label for="actionTaken" class="form-label">Action Taken</label>
+                    <input type="text" class="form-control form-control-lg" name="actionTaken"
+                     placeholder="">
+                </div>`;
+            container.appendChild(row);
+        });
+    </script>
+</body>
+
+</html>
